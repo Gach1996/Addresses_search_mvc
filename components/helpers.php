@@ -9,11 +9,20 @@ if (!function_exists('dd')) {
 }
 
 if (!function_exists('view')) {
-    function view($view, $args) {
-
+    function view($view, $args)
+    {
         extract($args);
 
         include '../views/' . $view;
+        die;
+    }
+}
+
+
+if (!function_exists('loadTemplate')) {
+    function loadTemplate($smarty, $templateName)
+    {
+        $smarty->display($templateName . TemplatePostfix);
         die;
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
 require_once ROOT. '/../models/Addresses.php';
+require_once ROOT. '/../controllers/Controller.php';
 
-class HomeController
+class HomeController extends Controller
 {
     public function actionIndex()
     {
-        view('pages/index.php', []);
+        loadTemplate($this->smartyObj, 'pages/index');
     }
 
     public function actionSearch()

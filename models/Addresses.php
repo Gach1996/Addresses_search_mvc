@@ -12,7 +12,7 @@ class Addresses
         if (!empty($term) && mb_strlen($term) >= 3) {
             $term = trim($term);
 
-            $term = str_replace(' ', '+', $term);
+            $term = str_replace(' ', '-', $term);
             $term = '+' . $term;
 
             $fullTextSearchSql = "SELECT * FROM addresses
@@ -37,13 +37,13 @@ class Addresses
         if ($id) {
             $id = (int) $id;
 
-            $sql = "SELECT id FROM addresses WHERE id = $id";
+            $sql = "SELECT id, addresses_street  FROM addresses WHERE id = $id";
 
             $res = mysqli_query($connection, $sql);
-            $resultId = mysqli_fetch_assoc($res);
+            $result = mysqli_fetch_assoc($res);
         }
 
-        return $resultId;
+        return $result;
     }
 
     public static function getOthers($id)

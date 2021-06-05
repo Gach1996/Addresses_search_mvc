@@ -1,10 +1,11 @@
 <?php
+
 require_once ROOT. '/../models/Addresses.php';
 require_once ROOT. '/../models/Search.php';
 require_once ROOT. '/../models/Distance.php';
+require_once ROOT. '/../controllers/Controller.php';
 
-
-class SearchController
+class SearchController extends Controller
 {
     public function actionResult($id = null)
     {
@@ -12,26 +13,19 @@ class SearchController
             return;
         }
 
-        $resultId = Addresses::checkResultExist($id);
-        if (!isset($resultId)) {
+        $result = Addresses::checkResultExist($id);
+        if (!isset($result)) {
             return;
         }
 
         $otherAddresses = Addresses::getOthers($id);
 
-        $tableAddresses = Search::result($resultId, $otherAddresses);
-//        dd(count($tableAddresses['5']));
-//        dd(count($tableAddresses['5']));
+        $tableAddresses = Search::result($result, $otherAddresses);
 
-        if (count($tableAddresses['5']) > count($tableAddresses['5_30']) && count($tableAddresses['5']) > count($tableAddresses['30'])) {
-            $c = count($tableAddresses['5']);
-        } elseif (count($tableAddresses['5_30']) > count($tableAddresses['5']) && count($tableAddresses['5_30']) > count($tableAddresses['30'])) {
-            $c = count($tableAddresses['5_30']);
-        } else {
-            $c = count($tableAddresses['30']);
-        }
+        $this->smartyObj->assign('tableAddresses', $tableAddresses);
+        $this->smartyObj->assign('clickedAddress', $result);
 
-        view('search/result.php', compact('tableAddresses', 'c'));
+        loadTemplate($this->smartyObj, 'search/result');
     }
 
 }

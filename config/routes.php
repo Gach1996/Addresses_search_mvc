@@ -1,7 +1,6 @@
 <?php
 
-return array(
-
+return [
     'home/([0-9]+)' => 'home/index/$1',
     'home' => 'home/index',
     'import' => 'import/import',
@@ -10,5 +9,5 @@ return array(
     'search' => 'home/search',
 
     '/' => 'home/index',
-);
+];
 

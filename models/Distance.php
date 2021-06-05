@@ -2,8 +2,6 @@
 
 class Distance
 {
-
-
     public static function getDistance($fromId, $toId)
     {
 
