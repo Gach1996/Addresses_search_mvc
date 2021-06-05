@@ -2,17 +2,6 @@
 
 class Db
 {
-    private static $instance;
-
-    protected function __construct() { }
-
-    protected function __clone() { }
-
-    public function __wakeup()
-    {
-        throw new \Exception("Cannot unserialize a singleton.");
-    }
-
     public static function getConnection()
     {
         $paramsPath = ROOT . '/../config/db_params.php';
@@ -37,9 +26,7 @@ class Db
         }
         $con->select_db($params['dbname']);
 
-        self::$instance = $con;
-
-        return self::$instance;
+        return $con;
     }
 
 }

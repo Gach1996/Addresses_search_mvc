@@ -5,6 +5,8 @@ class Search
 
     public static function result($resultId, $addresses)
     {
+        $connection = Db::getConnection();
+
         $tableAddressesHtml = '';
 
         if (!isset($addresses) || count($addresses) === 0) {
@@ -14,7 +16,7 @@ class Search
         foreach ($addresses as $key => $address) {
             $addressName = $address['addresses_street'] . " " . $address['addresses_address'];
 
-            $distance = Distance::getDistance($resultId['id'], $address['id']);
+            $distance = Distance::getDistance($connection, $resultId['id'], $address['id']);
 
             $td = '';
 
