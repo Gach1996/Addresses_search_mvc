@@ -5,7 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="APP" content="{$APP}">
     <link rel="stylesheet" type="text/css" href="http://localhost/TasksMVC/public/media/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/TasksMVC/public/media/css/resStyle.css">
     <title>Task_2</title>
     <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -31,67 +33,6 @@
         </table>
     </div>
 {/if}
-<script>
-    $(function () {
-        $('table')
-            .on('click', 'th', function () {
-                 var index = $(this).index(),
-                     rows = [],
-                     thClass = $(this).hasClass('asc') ? 'desc' : 'asc';
-
-                    $('#addresses th').removeClass('asc desc');
-                    $(this).addClass(thClass);
-
-                    $('#addresses tbody tr').each(function (index, row) {
-                        rows.push($(row).detach());
-                    });
-
-                    rows.sort(function (a, b) {
-
-                        var aValue = $(a).find('td').eq(index).attr('data-distance'),
-                            bValue = $(b).find('td').eq(index).attr('data-distance');
-
-                        return aValue > bValue
-                            ? 1
-                            : aValue < bValue
-                                ? -1
-                                : 0;
-                    });
-
-                    if ($(this).hasClass('desc')) {
-                        rows.reverse();
-                    }
-
-                    $.each(rows, function (index, row) {
-                        $('#addresses tbody ').append(row);
-                    });
-
-            });
-    });
-</script>
-<style >
-    #addresses th,
-    #addresses td {
-        padding: 10px;
-    }
-
-    #addresses th:hover {
-        cursor: pointer;
-    }
-
-    #addresses th.asc:after {
-        display: inline;
-        content: '↓';
-    }
-
-    #addresses th.desc:after {
-        display: inline;
-        content: '↑';
-    }
-
-    #addresses th {
-        background: #ccc;
-    }
-</style>
+<script  src="http://localhost/TasksMVC/public/media/js/sortScript.js"></script>
 </body>
 </html>

@@ -13,6 +13,8 @@ class Controller
         $smartyObj->setCacheDir('../tmp/cache');
         $smartyObj->setConfigDir('../library/Smarty/configs');
 
+        $smartyObj->assign('APP', APP);
+
         $this->smartyObj = $smartyObj;
     }
 }

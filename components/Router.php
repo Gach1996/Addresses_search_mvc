@@ -7,6 +7,7 @@ class Router
 
     public function __construct()
     {
+
         $routesPath = ROOT . '/../config/routes.php';
         $this->routes = include($routesPath);
     }
@@ -16,19 +17,27 @@ class Router
      */
     private function getURI()
     {
+        if ($_SERVER['REQUEST_URI'] == '/') {
+            return '/';
+        }
+
         if(!empty($_SERVER['REQUEST_URI'])) {
             $fullUri = trim($_SERVER['REQUEST_URI'], '/');
             $demofullUri = $fullUri;
             $count = explode('/', $demofullUri);
 
-            $fullUri = array_slice(explode('/', $fullUri), 1);
+            if (empty(APP)) {
+                $fullUri = explode('/', $fullUri);
+            } else {
+                $fullUri = array_slice(explode('/', $fullUri), 1);
+            }
 
             if (count($fullUri) === 0) {
                 $fullUri[] = '/';
             }
 
             $uri = implode('/', $fullUri);
-
+            //imasty 31-34
             if (isset($_SERVER['QUERY_STRING'])) {
                 $url = explode('?', $uri);
                 $uri = $url[0];
@@ -36,7 +45,7 @@ class Router
 
             return str_replace('public/', '', $uri);
         } else {
-            return ['/'];
+            return '/';
         }
     }
 
@@ -51,6 +60,7 @@ class Router
 
                 $controllerName = ucfirst(array_shift($segments) . 'Controller');
                 $actionName = 'action' . ucfirst(array_shift($segments));
+
 
                 $parameters = $segments;
 

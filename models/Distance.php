@@ -2,10 +2,10 @@
 
 class Distance
 {
-    public static function getDistance($connection, $fromId, $toId)
+    public static function getDistance($connection, $oneId, $allId)
     {
         $earthRadius = 6378;
-        $sql = "SELECT addresses_cord_x, addresses_cord_y FROM addresses WHERE id=$fromId OR id=$toId";
+        $sql = "SELECT addresses_cord_x, addresses_cord_y FROM addresses WHERE id=$oneId OR id=$allId";
         $query = mysqli_fetch_all(mysqli_query($connection, $sql));
         $fromX = deg2rad($query[0][0]);
         $fromY = deg2rad($query[0][1]);

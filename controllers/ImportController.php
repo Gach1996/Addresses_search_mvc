@@ -8,7 +8,18 @@ class ImportController
     {
         $import = Import::importXML();
 
-        header('Location: /' . APP);
+        $redirect = empty(APP) ? '/' : APP;
+
+        header('Location: ' . $redirect);
+    }
+
+    public function actionRemove()
+    {
+        Import::removeTable();
+
+        $redirect = empty(APP) ? '/' : APP;
+
+        header('Location: ' . $redirect);
     }
 
 }

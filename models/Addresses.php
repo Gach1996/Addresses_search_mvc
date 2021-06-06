@@ -11,12 +11,23 @@ class Addresses
 
         if (!empty($term) && mb_strlen($term) >= 3) {
             $term = trim($term);
+            $words = explode(' ', $term);
 
-            $term = str_replace(' ', '-', $term);
+            if (count($words) > 1) {
+
+            }
+
+            //1-я Радиаторская ул // 1-я    Радиаторская    ул
+//            $term = str_replace(' ', ' +', $term);
             $term = '+' . $term;
-
             $fullTextSearchSql = "SELECT * FROM addresses
     WHERE MATCH(addresses_address,addresses_street) AGAINST('{$term}'IN BOOLEAN MODE)";
+
+            $fullTextSearchSql = "
+              SELECT *, MATCH(addresses_address,addresses_street) AGAINST('{$term}'IN BOOLEAN MODE) as relevance
+              FROM addresses
+              WHERE MATCH(addresses_address,addresses_street) AGAINST('{$term}'IN BOOLEAN MODE)
+              ORDER BY relevance DESC;";
             $result = $connection->query($fullTextSearchSql);
 
             if ($result) {

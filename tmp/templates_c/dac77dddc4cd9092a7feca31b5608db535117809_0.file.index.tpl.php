@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-06-05 01:00:16
+/* Smarty version 3.1.39, created on 2021-06-06 16:39:52
   from 'C:\xampp\htdocs\TasksMVC\views\pages\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60bab08074df77_17015924',
+  'unifunc' => 'content_60bcde3889f0d5_14536787',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dac77dddc4cd9092a7feca31b5608db535117809' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TasksMVC\\views\\pages\\index.tpl',
-      1 => 1622847460,
+      1 => 1622990387,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60bab08074df77_17015924 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60bcde3889f0d5_14536787 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,8 +29,11 @@ function content_60bab08074df77_17015924 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="http://localhost/TasksMVC/public/media/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['APP']->value;?>
+/public/media/css/style.css">
     <title>Search Address</title>
+    <meta name="APP" content="<?php echo $_smarty_tpl->tpl_vars['APP']->value;?>
+">
 
     <?php echo '<script'; ?>
 
@@ -42,8 +45,28 @@ function content_60bab08074df77_17015924 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 <body>
 
-<input type="text" id="name" placeholder="Введите текст">
-<input type="button" id="done" value="Готово">
+<div style="overflow: hidden">
+    <div style="float: left">
+        <form action="<?php echo $_smarty_tpl->tpl_vars['APP']->value;?>
+/search" method="GET" id="search">
+            <input type="text" id="name" placeholder="Введите текст">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div style="float: right">
+        <div style="float: left; margin-right: 20px;">
+            <a href="<?php echo $_smarty_tpl->tpl_vars['APP']->value;?>
+/import">Fill addresses table</a>
+        </div>
+        <div style="float: right">
+            <a href="<?php echo $_smarty_tpl->tpl_vars['APP']->value;?>
+/remove">Remove addresses table</a>
+        </div>
+    </div>
+</div>
+
+
+
 <div id="information">
     <p class="message"></p>
     <table class="tab">

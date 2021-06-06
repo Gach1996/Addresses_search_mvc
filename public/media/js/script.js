@@ -44,9 +44,12 @@ $(document).ready(function () {
     }
 
 
-    $("#done").on("click", function () {
+    $("#search").on("submit", function () {
+        var $app = $('meta[name=APP]').attr('content');
+        var action = $(this).attr('action')
+
         $.ajax({
-            url: "/TasksMVC/search",
+            url: action,
             dataType: "json",
             // contentType: "application/json",
             data: {name: $("#name").val()},
@@ -57,11 +60,14 @@ $(document).ready(function () {
                 console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
             }
         });
+        return false;
     });
 
     $(document).on('click', '.address_row', function () {
+        var $app = $('meta[name=APP]').attr('content');
+
         var clickedId = $(this).attr('data-id');
-        $('#result_form').attr('action', '/TasksMVC/search/' + clickedId);
+        $('#result_form').attr('action', $app+'/search/' + clickedId);
         $('#result_form').submit();
     })
 });

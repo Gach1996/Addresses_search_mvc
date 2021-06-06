@@ -11,7 +11,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 define('ROOT', dirname(__FILE__));
-define('APP', 'TasksMVC');
+define('APP', '/TasksMVC');
 //define('URI', $_SERVER['REQUEST_URI']);
 
 require_once(ROOT.'/../components/helpers.php');

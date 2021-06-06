@@ -6,8 +6,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="http://localhost/TasksMVC/public/media/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{$APP}/public/media/css/style.css">
     <title>Search Address</title>
+    <meta name="APP" content="{$APP}">
 
     <script
             src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -17,8 +18,25 @@
 </head>
 <body>
 
-<input type="text" id="name" placeholder="Введите текст">
-<input type="button" id="done" value="Готово">
+<div style="overflow: hidden">
+    <div style="float: left">
+        <form action="{$APP}/search" method="GET" id="search">
+            <input type="text" id="name" placeholder="Введите текст">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div style="float: right">
+        <div style="float: left; margin-right: 20px;">
+            <a href="{$APP}/import">Fill addresses table</a>
+        </div>
+        <div style="float: right">
+            <a href="{$APP}/remove">Remove addresses table</a>
+        </div>
+    </div>
+</div>
+
+
+
 <div id="information">
     <p class="message"></p>
     <table class="tab">

@@ -38,6 +38,19 @@ addresses_street_type, addresses_adm, addresses_adm1, addresses_adm2, addresses_
         $connection->close();
     }
 
+    public static function removeTable()
+    {
+        $paramsPath = ROOT . '/../config/db_params.php';
+
+        $params = include ($paramsPath);
+
+        $connection = Db::getConnection();
+
+        mysqli_query($connection, "DROP TABLE IF EXISTS addresses");
+
+        $connection->close();
+    }
+
     private static function create($connection)
     {
         mysqli_query($connection, "DROP TABLE IF EXISTS addresses");

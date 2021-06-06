@@ -1,0 +1,24 @@
+#addresses th,
+#addresses td {
+    padding: 10px;
+}
+
+#addresses th:hover {
+    cursor: pointer;
+}
+
+#addresses th.asc:after {
+    display: inline;
+    content: '↓';
+
+}
+
+#addresses th.desc:after {
+    display: inline;
+    content: '↑';
+
+}
+
+#addresses th {
+    background: #ccc;
+}
