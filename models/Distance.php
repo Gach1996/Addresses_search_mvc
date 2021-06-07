@@ -18,11 +18,9 @@ class Distance
         $yDelta = abs($toY - $fromY);
         $angle = 2 * asin(sqrt(pow(sin($xDelta / 2), 2) + cos($fromX) * cos($toX) * pow(sin($yDelta / 2), 2)));
         $distance = $angle * $earthRadius;
-        if ($distance > 30) {
-            $distance = round($distance, 0);
-        } else {
-            $distance = round($distance, 1);
-        }
+
+        $distance = round($distance, 1);
+
         return $distance;
     }
 }

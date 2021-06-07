@@ -14,8 +14,8 @@ $(function () {
 
                 rows.sort(function (a, b) {
 
-                    var aValue = $(a).find('td').eq(index).attr('data-distance'),
-                        bValue = $(b).find('td').eq(index).attr('data-distance');
+                    var aValue = +$(a).find('td').eq(index).attr('data-distance'),
+                        bValue = +$(b).find('td').eq(index).attr('data-distance');
 
                     return aValue > bValue
                         ? 1
