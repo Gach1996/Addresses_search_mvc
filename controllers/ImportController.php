@@ -2,6 +2,9 @@
 
 require_once ROOT. '/../models/Import.php';
 
+/**
+ * Class ImportController
+ */
 class ImportController
 {
     public function actionImport()

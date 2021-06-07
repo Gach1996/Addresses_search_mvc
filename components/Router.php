@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Router
+ */
 class Router
 {
 
@@ -37,7 +40,7 @@ class Router
             }
 
             $uri = implode('/', $fullUri);
-            //imasty 31-34
+
             if (isset($_SERVER['QUERY_STRING'])) {
                 $url = explode('?', $uri);
                 $uri = $url[0];

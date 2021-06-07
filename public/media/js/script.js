@@ -35,12 +35,10 @@ $(document).ready(function () {
                     "<td>" + item.addresses_adm2 + "</td>" +
                     "<td>" + item.addresses_cord_y + "</td>" +
                     "<td>" + item.addresses_cord_x + "</td>" +
-                    // '<td><form action="file_1.php" method="get"> <input type="hidden" value="'+item.id+'" name="id"> <button class="btn btn-secondary" type="submit">select </button> </form></td>' +
                     "</tr>");
             });
         }
         $("#information .message").text("");
-        // $("#information").html(data);
     }
 
 
@@ -51,7 +49,6 @@ $(document).ready(function () {
         $.ajax({
             url: action,
             dataType: "json",
-            // contentType: "application/json",
             data: {name: $("#name").val()},
             type: "get",
             beforeSend: funcBefore,

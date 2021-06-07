@@ -3,6 +3,9 @@
 require_once ROOT. '/../models/Addresses.php';
 require_once ROOT. '/../controllers/Controller.php';
 
+/**
+ * Class HomeController
+ */
 class HomeController extends Controller
 {
     public function actionIndex()

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Db
+ */
 class Db
 {
     public static function getConnection()

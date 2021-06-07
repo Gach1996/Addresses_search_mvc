@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Distance
+ */
 class Distance
 {
     public static function getDistance($connection, $oneId, $allId)

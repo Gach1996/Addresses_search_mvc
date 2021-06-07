@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Import
+ */
 class Import
 {
     public static function importXML()

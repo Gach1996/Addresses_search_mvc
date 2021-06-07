@@ -12,7 +12,6 @@ error_reporting(E_ALL);
 
 define('ROOT', dirname(__FILE__));
 define('APP', '/TasksMVC');
-//define('URI', $_SERVER['REQUEST_URI']);
 
 require_once(ROOT.'/../components/helpers.php');
 require_once(ROOT.'/../components/Router.php');

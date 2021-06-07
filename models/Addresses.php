@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Addresses
+ */
 class Addresses
 {
 
@@ -9,25 +12,14 @@ class Addresses
 
         $result = null;
 
-        if (!empty($term) && mb_strlen($term) >= 3) {
-            $term = trim($term);
-            $words = explode(' ', $term);
+        if (!empty($term)) {
+            $term = trim(mysqli_real_escape_string($connection, $term));
 
-            if (count($words) > 1) {
+            $term = str_replace(' ', '* ', $term) . '*';
 
-            }
-
-            //1-я Радиаторская ул // 1-я    Радиаторская    ул
-//            $term = str_replace(' ', ' +', $term);
-            $term = '+' . $term;
             $fullTextSearchSql = "SELECT * FROM addresses
     WHERE MATCH(addresses_address,addresses_street) AGAINST('{$term}'IN BOOLEAN MODE)";
 
-            $fullTextSearchSql = "
-              SELECT *, MATCH(addresses_address,addresses_street) AGAINST('{$term}'IN BOOLEAN MODE) as relevance
-              FROM addresses
-              WHERE MATCH(addresses_address,addresses_street) AGAINST('{$term}'IN BOOLEAN MODE)
-              ORDER BY relevance DESC;";
             $result = $connection->query($fullTextSearchSql);
 
             if ($result) {
@@ -48,7 +40,7 @@ class Addresses
         if ($id) {
             $id = (int) $id;
 
-            $sql = "SELECT id, addresses_street  FROM addresses WHERE id = $id";
+            $sql = "SELECT id, addresses_street FROM addresses WHERE id = $id";
 
             $res = mysqli_query($connection, $sql);
             $result = mysqli_fetch_assoc($res);

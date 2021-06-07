@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Controller
+ */
 class Controller
 {
    protected $smartyObj;

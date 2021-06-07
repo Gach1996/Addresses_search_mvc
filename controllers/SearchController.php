@@ -5,6 +5,9 @@ require_once ROOT. '/../models/Search.php';
 require_once ROOT. '/../models/Distance.php';
 require_once ROOT. '/../controllers/Controller.php';
 
+/**
+ * Class SearchController
+ */
 class SearchController extends Controller
 {
     public function actionResult($id = null)

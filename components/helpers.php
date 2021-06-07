@@ -18,7 +18,6 @@ if (!function_exists('view')) {
     }
 }
 
-
 if (!function_exists('loadTemplate')) {
     function loadTemplate($smarty, $templateName)
     {
